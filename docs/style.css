@@ -1,0 +1,174 @@
+/* 기본 초기화 및 배경 세팅 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* 폰 화면이 매우 작아 세로 스크롤이 생길 때를 대비 */
+    min-height: -webkit-fill-available; 
+    background: radial-gradient(circle, #1a1c23 0%, #0f1015 100%);
+    color: #ffffff;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* 📱 모바일 브라우저 100vh 스크롤 버그 해결 */
+html {
+    height: -webkit-fill-available;
+}
+
+/* 카드 컨테이너 (유연한 너비 및 높이 대응) */
+.container {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px); /* 사파리 지원 */
+    padding: 8vw 6vw; /* 화면 너비 대비 패딩 조절 */
+    border-radius: 24px;
+    width: 100%;
+    /* 기기가 커져도 최대 400px까지만 늘어나도록 제한 */
+    max-width: 400px; 
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 🎯 원형 이미지 로고 (반응형 크기 조절) */
+.logo-wrapper {
+    /* 기본적으로 화면 너비의 30% 크기를 유지하되, 100px ~ 140px 사이로 유연하게 제한 */
+    width: 30vw;
+    height: 30vw;
+    max-width: 140px;
+    max-height: 140px;
+    min-width: 100px;
+    min-height: 100px;
+    margin: 0 auto 5%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ffb319;
+    box-shadow: 0 0 20px rgba(255, 179, 25, 0.3);
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 타이틀 (화면 너비에 맞춰 폰트 크기 반응) */
+.title {
+    font-size: calc(1.8rem + 0.5vw);
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #ffffff;
+    margin-bottom: 6%;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* ID 정보 박스 */
+.info-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* 작은 기기에서 ID가 너무 길면 줄바꿈 허용 */
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 16px;
+    border-radius: 12px;
+    margin-bottom: 4%;
+    transition: all 0.3s ease;
+}
+
+.info-box:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 179, 25, 0.3);
+}
+
+.label {
+    color: #8f94a5;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.value {
+    color: #ffb319;
+    font-weight: 700;
+    font-size: 0.95rem;
+    word-break: break-all; /* 긴 ID가 박스 밖으로 삐져나가지 않도록 줄 바꿈 강제 */
+    max-width: 100%;
+}
+
+.version {
+    color: #ffffff;
+    margin-bottom: 32px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    word-break: break-all; /* 긴 ID가 박스 밖으로 삐져나가지 않도록 줄 바꿈 강제 */
+    max-width: 100%;
+}
+
+/* 복사 성공 알림 메시지 */
+.message {
+    font-size: 0.8rem;
+    color: #4caf50;
+    margin-bottom: 5%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    min-height: 1.2rem; /* 공간을 차지하게 하여 떴을 때 버튼이 밀려 내려가지 않게 보정 */
+}
+
+/* 다운로드 버튼 */
+.btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #ffb319 0%, #e09200 100%);
+    border: none;
+    border-radius: 12px;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 179, 25, 0.25);
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(255, 179, 25, 0.4);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* 📱 아주 작은 기기(예: 아이폰 SE 등 가로가 매우 작은 단말기)를 위한 미세 조정 */
+@media (max-width: 340px) {
+    .container {
+        padding: 24px 16px;
+    }
+    .title {
+        font-size: 1.6rem;
+    }
+    .logo-wrapper {
+        width: 90px;
+        height: 90px;
+        min-width: 90px;
+        min-height: 90px;
+    }
+    .btn {
+        padding: 13px;
+        font-size: 0.9rem;
+    }
+}
