@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 3. 다운로드 버튼 클릭 이벤트
     const downloadBtn = document.getElementById("download-btn");
-    const apkUrl = "https://github.com/t27501444-del/hunter-user/releases/download/30/hunter-user.apk";
+    const apkUrl = "https://github.com/t27501444-del/hunter-user/releases/download/32/hunter-user.apk";
 
     downloadBtn.addEventListener("click", () => {
         // 혹시 모를 로드 시점 복사 실패를 대비해 버튼 클릭 시점에 한 번 더 복사 시도
